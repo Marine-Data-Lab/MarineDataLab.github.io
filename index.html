@@ -3,62 +3,226 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Información general del proyecto</title>
-	<style type="text/css">
+	<title>Marine Data Lab</title>
+	<meta name="description" content="Marine Data Lab: ciencia de datos, modelación e inteligencia artificial aplicadas a pesquerías y ecosistemas marinos.">
+	<style>
+		:root {
+			--bg: #f6f9fb;
+			--surface: #ffffff;
+			--text: #0b2233;
+			--muted: #4a6274;
+			--accent: #0a6e8a;
+			--accent-soft: #e0f0f5;
+			--border: #d7e3ea;
+			--hero-from: #062a3d;
+			--hero-to: #0a6e8a;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #08141c;
+				--surface: #0f212d;
+				--text: #e4eef3;
+				--muted: #9db3c1;
+				--accent: #5cc3dd;
+				--accent-soft: #123445;
+				--border: #1d3746;
+				--hero-from: #041722;
+				--hero-to: #0b4a5e;
+			}
+		}
+		* { box-sizing: border-box; }
 		body {
-			background-color: #ffffff;
-			color: #001f3f;
+			margin: 0;
+			font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+			line-height: 1.6;
+			background: var(--bg);
+			color: var(--text);
 		}
-		h1 {
-			text-align: center;
-			margin-top: 50px;
+		a { color: var(--accent); }
+		.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+		header.hero {
+			background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+			color: #fff;
+			padding: 72px 0 64px;
 		}
-		h2 {
-			margin-top: 30px;
+		.hero .tag {
+			text-transform: uppercase;
+			letter-spacing: .12em;
+			font-size: .8rem;
+			opacity: .8;
+			margin: 0 0 8px;
 		}
-		p {
-			margin-top: 10px;
-			margin-bottom: 10px;
-			text-align: justify;
-			text-indent: 50px;
+		.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1.1; margin: 0 0 16px; }
+		.hero p { font-size: 1.15rem; max-width: 640px; margin: 0; opacity: .92; }
+
+		nav.top {
+			position: sticky; top: 0; z-index: 10;
+			background: var(--surface);
+			border-bottom: 1px solid var(--border);
 		}
-		.container {
-			margin: 50px auto;
-			max-width: 800px;
+		nav.top .wrap { display: flex; gap: 20px; overflow-x: auto; padding-top: 12px; padding-bottom: 12px; }
+		nav.top a { text-decoration: none; color: var(--muted); font-weight: 600; white-space: nowrap; }
+		nav.top a:hover { color: var(--accent); }
+
+		section { padding: 56px 0 8px; }
+		h2 { font-size: 1.6rem; margin: 0 0 20px; }
+		.lead { color: var(--muted); max-width: 720px; margin-top: -8px; }
+
+		.areas { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+		.area { background: var(--accent-soft); border-radius: 12px; padding: 18px 20px; }
+		.area h3 { margin: 0 0 6px; font-size: 1.05rem; }
+		.area p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+		.cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+		.card {
+			background: var(--surface);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 22px;
+			display: flex; flex-direction: column;
 		}
-		.bio {
-			margin-top: 50px;
+		.card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+		.card p { margin: 0 0 16px; color: var(--muted); flex: 1; }
+		.card .links { display: flex; flex-wrap: wrap; gap: 14px; font-weight: 600; font-size: .95rem; }
+		.card .links a { text-decoration: none; }
+		.card .links a:hover { text-decoration: underline; }
+		.chip {
+			display: inline-block; font-size: .75rem; font-weight: 700;
+			color: var(--accent); background: var(--accent-soft);
+			border-radius: 999px; padding: 2px 10px; margin-bottom: 10px;
+			align-self: flex-start;
 		}
-		.bio h3 {
-			margin-bottom: 10px;
+
+		.pending {
+			border: 2px dashed var(--border);
+			border-radius: 14px;
+			padding: 20px;
+			color: var(--muted);
 		}
-		.bio p {
-			margin-top: 5px;
-			margin-bottom: 5px;
-		}
+
+		footer { margin-top: 64px; padding: 28px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; }
 	</style>
 </head>
 <body>
-	<div class="container">
-		<h1>Desarrollo de videojuego para pesquerías</h1>
-		<h2>Resumen del proyecto</h2>
-		<p>Este proyecto propone el desarrollo de un videojuego estratégico que simula de manera gráfica la gestión de los recursos pesqueros, el cambio climático y escenarios económicos. El objetivo del videojuego es evaluar estrategias de toma de decisiones y permitir a los pescadores comprender de manera fácil y amigable los procesos involucrados en la gestión de pesquerías, así como los beneficios de la diversificación para crear comunidades más resilientes. El diseño del juego integrará diferentes modelos ecológicos y económicos que utilizarán datos reales y escenarios de cambio climático. Las decisiones tomadas por los jugadores se registrarán en tiempo real en una base de datos para proponer un modelo de inteligencia artificial que sugiera estrategias o reglas de juego en la siguiente fase del proyecto.</p>
-		<h2>Objetivos</h2>
-		<ul>
-			<li>Evaluar estrategias de toma de decisiones en la gestión de pesquerías</li>
-			<li>Permitir a los pescadores comprender de manera fácil y amigable los procesos involucrados en la gestión de pesquerías</li>
-			<li>Promover la diversificación de los recursos pesqueros para crear comunidades más resilientes</li>
-			<li>Utilizar modelos ecológicos y económicos que utilicen datos reales y escenarios de cambio climático</li>
-			<li>Desarrollar un modelo de inteligencia artificial para sugerir estrategias o reglas de juego</li>
-			<li>Realizar talleres y capacitaciones con los pescadores y otras partes interesadas para discutir y analizar los resultados del juego y cómo se pueden aplicar en la gestión de los recursos pesqueros y la adaptación al cambio climático.</li>
-		</ul>
-		<h2>Equipo del proyecto</h2>
-		<ul>
-			<li>María González - Diseñadora gráfica</li>
-			<li>José Pérez - Programador</li>
-			<li>Carlos Ramírez - Investigador en pesquerías</li>
-			<li>Ana Torres - Coordinadora de talleres y capacitaciones</li>
-		</ul>
-	</div>
+	<header class="hero">
+		<div class="wrap">
+			<p class="tag">Laboratorio de datos marinos</p>
+			<h1>Marine Data Lab</h1>
+			<p>Ciencia de datos, modelación e inteligencia artificial para entender y gestionar pesquerías y ecosistemas marinos frente al cambio climático.</p>
+		</div>
+	</header>
+
+	<nav class="top">
+		<div class="wrap">
+			<a href="#lineas">Líneas de trabajo</a>
+			<a href="#proyectos">Proyectos</a>
+			<a href="#docencia">Docencia</a>
+			<a href="#equipo">Equipo</a>
+			<a href="#contacto">Contacto</a>
+		</div>
+	</nav>
+
+	<main class="wrap">
+		<section id="lineas">
+			<h2>Líneas de trabajo</h2>
+			<div class="areas">
+				<div class="area">
+					<h3>Pesquerías y cambio climático</h3>
+					<p>Análisis de la actividad pesquera y de su vulnerabilidad ante escenarios climáticos.</p>
+				</div>
+				<div class="area">
+					<h3>Inteligencia artificial</h3>
+					<p>Modelos de aprendizaje automático para apoyar la toma de decisiones en la gestión de recursos.</p>
+				</div>
+				<div class="area">
+					<h3>Monitoreo de flotas</h3>
+					<p>Procesamiento y análisis de datos de seguimiento satelital de embarcaciones (VMS).</p>
+				</div>
+				<div class="area">
+					<h3>Herramientas para comunidades</h3>
+					<p>Aplicaciones, simuladores y juegos que acercan la ciencia a pescadores y tomadores de decisiones.</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="proyectos">
+			<h2>Proyectos</h2>
+			<div class="cards">
+				<article class="card">
+					<span class="chip">Cambio climático · IA</span>
+					<h3>Evaluación del cambio climático en pesquerías del Golfo de California</h3>
+					<p>Análisis de la actividad pesquera mexicana en el Golfo de California ante el cambio climático mediante modelos de inteligencia artificial. Proyecto con CEDO, financiado por Google.</p>
+					<div class="links">
+						<a href="https://github.com/Marine-Data-Lab/AssesingClimateChange">Código</a>
+					</div>
+				</article>
+				<article class="card">
+					<span class="chip">Juego serio</span>
+					<h3>Videojuego para pesquerías</h3>
+					<p>Juego estratégico que simula la gestión de recursos pesqueros, el cambio climático y escenarios económicos para evaluar estrategias de toma de decisiones con pescadores.</p>
+					<div class="links">
+						<a href="proyectos/videojuego-pesquerias.html">Ver proyecto</a>
+					</div>
+				</article>
+				<article class="card">
+					<span class="chip">Aplicación</span>
+					<h3>PescApp México</h3>
+					<p>Sitio web del proyecto PescApp para el sector pesquero en México.</p>
+					<div class="links">
+						<a href="https://marine-data-lab.github.io/pescapp_web/">Sitio web</a>
+						<a href="https://github.com/Marine-Data-Lab/pescapp_web">Código</a>
+					</div>
+				</article>
+				<article class="card">
+					<span class="chip">Datos VMS</span>
+					<h3>Análisis de datos VMS</h3>
+					<p>Análisis de datos del sistema de monitoreo satelital de embarcaciones para caracterizar la actividad de la flota.</p>
+					<div class="links">
+						<a href="https://github.com/Marine-Data-Lab/Nemos_vms_analisys">Código</a>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="docencia">
+			<h2>Docencia</h2>
+			<div class="cards">
+				<article class="card">
+					<span class="chip">Curso</span>
+					<h3>Curso de computación</h3>
+					<p>Productos de los estudiantes que tomaron el curso de computación impartido por el Dr. Ricardo Cavieses.</p>
+					<div class="links">
+						<a href="https://marine-data-lab.github.io/curso_computacion/">Ver trabajos</a>
+						<a href="https://github.com/Marine-Data-Lab/curso_computacion">Código</a>
+					</div>
+				</article>
+				<article class="card">
+					<span class="chip">Simulador</span>
+					<h3>Simulador de registro hotelero</h3>
+					<p>Simulador web desarrollado en el laboratorio.</p>
+					<div class="links">
+						<a href="https://marine-data-lab.github.io/Simulador_registro_hotelero/">Abrir simulador</a>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="equipo">
+			<h2>Equipo</h2>
+			<!-- POR COMPLETAR: integrantes reales del laboratorio (nombre, cargo, foto opcional). -->
+			<div class="pending">Sección por completar con los integrantes del laboratorio.</div>
+		</section>
+
+		<section id="contacto">
+			<h2>Contacto</h2>
+			<!-- POR COMPLETAR: institución, dirección y correo de contacto del laboratorio. -->
+			<p>Encuentra nuestro trabajo en <a href="https://github.com/Marine-Data-Lab">github.com/Marine-Data-Lab</a>.</p>
+		</section>
+	</main>
+
+	<footer>
+		<div class="wrap">© Marine Data Lab</div>
+	</footer>
 </body>
 </html>
